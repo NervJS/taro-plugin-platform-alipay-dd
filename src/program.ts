@@ -12,13 +12,10 @@ export default class DD extends Alipay {
    * 增加组件或修改组件属性
    */
   modifyComponents () {
-    const { internalComponents } = this.template
-    const { recursiveMerge } = this.ctx.helper
-
     // 先按支付宝标准对齐组件
     super.modifyComponents()
 
     // 再处理钉钉与支付宝的组件差异
-    recursiveMerge(internalComponents, components)
+    this.template.mergeComponents(this.ctx, components)
   }
 }

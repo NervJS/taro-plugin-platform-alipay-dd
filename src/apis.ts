@@ -53,4 +53,5 @@ function processApis (taro) {
 export function initIotApi (taro) {
   processApis(taro)
   taro.SDKVersion = my.SDKVersion
+  taro.env = my.env
 }
