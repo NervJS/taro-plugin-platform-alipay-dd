@@ -7,7 +7,7 @@ export default (ctx: IPluginContext) => {
     useConfigName: 'mini',
     async fn ({ config }) {
       const program = new DD(ctx, config)
-      program.start()
+      await program.start()
     }
   })
 }

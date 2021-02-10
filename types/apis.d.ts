@@ -1,1 +1,1 @@
-export declare function initIotApi(taro: any): void;
+export declare function initNativeApi(taro: any): void;

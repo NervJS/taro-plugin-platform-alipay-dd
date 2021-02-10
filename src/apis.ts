@@ -1,57 +1,24 @@
-import { noPromiseApis, otherApis } from './apis-list'
+import { processApis } from '@tarojs/shared'
+import {
+  noPromiseApis,
+  needPromiseApis,
+  handleSyncApis,
+  transformMeta,
+  modifyAsyncResult,
+  request
+} from '@tarojs/plugin-platform-alipay/dist/runtime-utils'
+import { syncApis, asyncApis } from './apis-list'
 
-declare const my: any
+declare const dd: any
 
-function processApis (taro) {
-  const apis = [...noPromiseApis, ...otherApis]
-
-  apis.forEach(key => {
-    if (!(key in my)) {
-      taro[key] = () => {
-        console.warn(`钉钉小程序暂不支持 ${key}`)
-      }
-      return
-    }
-
-    if (otherApis.has(key)) {
-      taro[key] = (options, ...args) => {
-        options = options || {}
-        const obj = Object.assign({}, options)
-        if (typeof options === 'string') {
-          if (args.length) {
-            return my[key](options, ...args)
-          }
-          return my[key](options)
-        }
-
-        const p: any = new Promise((resolve, reject) => {
-          ['fail', 'success', 'complete'].forEach((k) => {
-            obj[k] = (res) => {
-              options[k] && options[k](res)
-              if (k === 'success') {
-                resolve(res)
-              } else if (k === 'fail') {
-                reject(res)
-              }
-            }
-          })
-          if (args.length) {
-            my[key](obj, ...args)
-          } else {
-            my[key](obj)
-          }
-        })
-        return p
-      }
-    } else {
-      taro[key] = (...args) => my[key].apply(my, args)
-    }
+export function initNativeApi (taro) {
+  processApis(taro, dd, {
+    noPromiseApis: new Set([...noPromiseApis, ...syncApis]),
+    needPromiseApis: new Set([...needPromiseApis, ...asyncApis]),
+    handleSyncApis,
+    transformMeta,
+    modifyAsyncResult,
+    request
   })
-}
-
-
-export function initIotApi (taro) {
-  processApis(taro)
-  taro.SDKVersion = my.SDKVersion
-  taro.env = my.env
+  taro.SDKVersion = dd.SDKVersion
 }

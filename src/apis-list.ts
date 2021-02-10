@@ -1,8 +1,8 @@
-export const noPromiseApis = new Set([
+export const syncApis = new Set([
   'previewFileInDingTalk',
 ])
 
-export const otherApis = new Set([
+export const asyncApis = new Set([
   'editPicture',
   'enableLeaveConfirm',
   'disableLeaveConfirm',
