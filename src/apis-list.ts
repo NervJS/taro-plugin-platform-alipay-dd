@@ -1,7 +1,3 @@
-export const syncApis = new Set([
-  'previewFileInDingTalk',
-])
-
 export const asyncApis = new Set([
   'editPicture',
   'enableLeaveConfirm',

@@ -5,8 +5,8 @@ const cwd = __dirname
 const base = {
   external: [
     '@tarojs/shared',
-    '@tarojs/service',
-    '@tarojs/plugin-platform-alipay/dist/runtime-utils'
+    '@tarojs/plugin-platform-alipay/dist/runtime-utils',
+    '@tarojs/plugin-platform-alipay/dist/components-react'
   ],
   plugins: [typescript({
     useTsconfigDeclarationDir: true

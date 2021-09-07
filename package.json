@@ -27,11 +27,11 @@
     "url": "https://github.com/NervJS/taro-plugin-platform-alipay-dd/issues"
   },
   "peerDependencies": {
-    "@tarojs/service": "~3.1.0",
-    "@tarojs/shared": "~3.1.0",
-    "@tarojs/plugin-platform-alipay": "~3.1.0"
+    "@tarojs/shared": "^3.3.8",
+    "@tarojs/plugin-platform-alipay": "^3.3.8"
   },
   "devDependencies": {
+    "@tarojs/service": "^3.3.0",
     "rollup": "^2.29.0",
     "rollup-plugin-typescript2": "^0.27.3",
     "typescript": "^4.0.3"
