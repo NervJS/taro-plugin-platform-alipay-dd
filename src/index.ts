@@ -1,3 +1,4 @@
+import { isString } from '@tarojs/shared'
 import DD from './program'
 import type { IPluginContext } from '@tarojs/service'
 
