@@ -11,6 +11,29 @@ export default (ctx: IPluginContext) => {
       await program.start()
     }
   })
+  
+  ctx.modifyRunnerOpts(({ opts }) => {
+    if (!opts?.compiler) return
+
+    if (isString(opts.compiler)) {
+      opts.compiler = {
+        type: opts.compiler
+      }
+    }
+    const { compiler } = opts
+    if (compiler.type === 'webpack5') {
+      compiler.prebundle ||= {}
+      const prebundleOptions = compiler.prebundle
+      if (prebundleOptions.enable === false) return
+      prebundleOptions.swc ||= {
+        jsc: {
+          target: 'es5'
+        }
+      }
+      prebundleOptions.exclude ||= []
+      prebundleOptions.exclude.push('@tarojs/plugin-platform-alipay-dd/dist/runtime')
+    }
+  })
 }
 
 // 支付宝小程序中，如果某个页面依赖了原生小程序组件，
