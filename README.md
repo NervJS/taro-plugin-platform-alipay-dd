@@ -71,6 +71,28 @@ function Index () {
 }
 ```
 
+#### Typings
+
+开发者在 `global.d.ts` 中加入 `/// <reference types="@tarojs/plugin-platform-alipay-dd/types/shims-dd.d.ts" />` 即可获得类型提示。
+
+例如：
+
+```typescript
+/// <reference types="@tarojs/plugin-platform-alipay-dd/types/shims-dd.d.ts" />
+/// <reference types="@tarojs/taro" />
+
+declare module "*.png";
+declare module "*.gif";
+declare module "*.jpg";
+declare module "*.jpeg";
+declare module "*.svg";
+declare module "*.css";
+declare module "*.less";
+declare module "*.scss";
+declare module "*.sass";
+declare module "*.styl";
+````
+
 ## License
 
 MIT License

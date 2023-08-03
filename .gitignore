@@ -3,4 +3,5 @@ node_modules
 .DS_Store
 yarn.lock
 package-lock.json
-types
+types/*
+!types/shims-*
