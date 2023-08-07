@@ -42,7 +42,8 @@ export default (ctx: IPluginContext) => {
     // fix https://github.com/NervJS/taro/issues/13478
     chain.merge({
       optimization: {
-        providedExports: false
+        providedExports: false,
+        usedExports: false,
       }
     })
   })
