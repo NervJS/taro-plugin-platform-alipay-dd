@@ -37,15 +37,6 @@ export default (ctx: IPluginContext) => {
       prebundleOptions.include.push('@tarojs/shared')
     }
   })
-
-  ctx.modifyWebpackChain(({ chain }) => {
-    // fix https://github.com/NervJS/taro/issues/13478
-    chain.merge({
-      optimization: {
-        providedExports: false
-      }
-    })
-  })
 }
 
 // 支付宝小程序中，如果某个页面依赖了原生小程序组件，
