@@ -8,5 +8,12 @@ export const components = {
     'nickName': '',
     'avatar': '',
     'size': singleQuote('normal')
+  },
+  OpenData: {
+    'openType': '',
+    'openId': '',
+    'defaultText': '',
+    'onError': '',
+    'class': ''
   }
 }
