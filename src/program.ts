@@ -5,6 +5,7 @@ const PACKAGE_NAME = '@tarojs/plugin-platform-alipay-dd'
 
 export default class DD extends Alipay {
   platform = 'dd'
+  globalObject = 'dd'
   runtimePath = `${PACKAGE_NAME}/dist/runtime`
   taroComponentsPath = `${PACKAGE_NAME}/dist/components-react`
 
